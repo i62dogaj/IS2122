@@ -3,6 +3,7 @@
 #include "../lib/login.h"
 #include "../lib/menu.h"
 #include "../lib/User.h"
+#include <unistd.h>
 
 using namespace std;
 
@@ -26,12 +27,7 @@ int main() {
 
     while (option != 0) {
         
-        if (currentUser.getType() != User::USER_ADMIN_TYPE) {
-            clearTerminal();
-            cout << "You must be USER ADMIN to use the application." << endl;
-
-            return 0;
-        }
+        
 
         printMenu();
         cin >> option;
@@ -39,27 +35,75 @@ int main() {
         switch (option)
         {
             case 1:
+
+                if (currentUser.getType() != User::USER_ADMIN_TYPE) {
+                    clearTerminal();
+                    cout << "You must be USER ADMIN to use this option." << endl;
+                    usleep(2000000);
+                    break;
+                }
+
                 printUsers(*users);
                 waitForUserInput();
                 break;
 
             case 2:
+
+                if (currentUser.getType() != User::USER_ADMIN_TYPE) {
+                    clearTerminal();
+                    cout << "You must be USER ADMIN to use this option." << endl;
+                    usleep(2000000);
+                    break;
+                }
+
                 addUser(*users);
                 break;
 
             case 3:
+
+                if (currentUser.getType() != User::USER_ADMIN_TYPE) {
+                    clearTerminal();
+                    cout << "You must be USER ADMIN to use this option." << endl;
+                    usleep(2000000);
+                    break;
+                }
+
                 editUser(*users);
                 break;
 
             case 4:
+
+                if (currentUser.getType() != User::USER_ADMIN_TYPE) {
+                    clearTerminal();
+                    cout << "You must be USER ADMIN to use this option." << endl;
+                    usleep(2000000);
+                    break;
+                }
+
                 removeUser(*users);
                 break;
 
             case 7:
+
+                if (currentUser.getType() != User::USER_ADMIN_TYPE) {
+                    clearTerminal();
+                    cout << "You must be USER ADMIN to use this option." << endl;
+                    usleep(2000000);
+                    break;
+                }
+
                 *users = loadUsers();
                 break;
 
             case 8:
+
+                if (currentUser.getType() != User::USER_ADMIN_TYPE) {
+                    clearTerminal();
+                    cout << "You must be USER ADMIN to use this option." << endl;
+                    usleep(2000000);
+                    break;
+                }
+
                 saveUsers(*users);
                 break;
             
